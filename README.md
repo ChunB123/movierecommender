@@ -1,6 +1,9 @@
 # Movie Recommendation System
-Provide live recommendations for 1 million users from 27k movies. 
+Generate 5-10 recommendations per seconds from 27k movies. 
 
+Separate monitoring services to extra containers.
+
+Zero down time continues deployment enabled.
 
 ## For remote machine
 ``
