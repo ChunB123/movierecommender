@@ -37,7 +37,7 @@ def recommendation_route(user_id):
         print("OSError found")
         return e
     except:
-        return "Server Error"
+        return "server Error"
     
     if int(user_id) in user_movies_df['userid'].tolist():
         movies = user_movies_df[user_movies_df['userid'] == int(user_id)]['movies'].tolist()[0]
