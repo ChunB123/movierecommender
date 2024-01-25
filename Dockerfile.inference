@@ -1,0 +1,17 @@
+FROM python:3.10.13-bookworm
+
+WORKDIR /team-2 
+
+COPY . .
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+# COPY monitering/kafka_consumer.py kafka_consumer.py
+
+WORKDIR /team-2/Server
+# CMD ["sh", "-c", "python ../src/train_automation.py & python server.py"]
+CMD ["python", "server.py"]
+# CMD ["sh", "-c", "python ../monitering/promtail_test.py & python ../monitering/kafka_consumer.py & python ../src/train_automation.py & python server.py"]
+
+# CMD ["sh", "-c", "python ../src/train_automation.py"]
+

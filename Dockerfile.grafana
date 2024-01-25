@@ -1,0 +1,5 @@
+FROM grafana/grafana:latest
+
+COPY monitering/shutdown-script.sh /shutdown-script.sh
+
+ENTRYPOINT ["/shutdown-script.sh"]

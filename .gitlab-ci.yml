@@ -1,0 +1,37 @@
+stages:
+  - UnitTest
+  - Deploy
+
+UnitTest_job:
+  stage: UnitTest
+  script: 
+    # - docker compose up -d
+    - docker compose up -d --build nginx
+    - sleep 100
+    - python3 -m unittest discover -s tests -p "test_*.py"
+    - docker compose down -v
+  # when: manual
+  tags:
+    - unit-testing
+  only:
+    - dev
+    - DockerImageEnvironmentOnly
+
+
+Deploy_job:
+  stage: Deploy
+  script:
+    - >
+      ssh -o StrictHostKeyChecking=no team-2@fall2023-comp585-2.cs.mcgill.ca "
+      pwd;
+      cd /home/team-2/m3_deploy/team-2;
+      pwd;
+      git checkout release_test;
+      git pull;
+      chmod 777 cd.sh;
+      ./cd.sh
+      "
+  tags:
+    - deploy
+  only:
+    - release_test

@@ -1,0 +1,66 @@
+version: '3'
+
+services:
+  inference-service:
+    container_name: mlservice_container
+    build:
+      context: .
+      dockerfile: Dockerfile.inference
+    volumes:
+      - kafka-logs:/path/to/kafka/logs
+
+  kafka-consumer:
+    container_name: kafka_consumer_container
+    build:
+      context: .
+      dockerfile: Dockerfile.kafka_consumer
+    volumes:
+      - kafka-logs:/path/to/kafka/logs
+
+  file-updater:
+    container_name: file_updater_container
+    build:
+      context: .
+      dockerfile: Dockerfile.file_updater
+    depends_on:
+      - inference-service
+    volumes:
+      - model-logs:/team-2/data
+
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+
+  blackbox_exporter:
+    image: prom/blackbox-exporter:latest
+    ports:
+      - "9115:9115"
+
+  grafana:
+    build:
+      context: .
+      dockerfile: Dockerfile.grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./monitering/grafana_data:/var/lib/grafana
+
+  loki:
+    image: grafana/loki:latest
+    ports:
+      - "3100:3100"
+
+  promtail:
+    image: grafana/promtail:latest
+    depends_on:
+      - loki
+    command: -config.file=/etc/promtail/config.yml
+    volumes:
+      - ./promtail-config.yml:/etc/promtail/config.yml
+      - kafka-logs:/path/to/kafka/logs
+
+volumes:
+  kafka-logs:

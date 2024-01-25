@@ -1,0 +1,8 @@
+*.pyc
+__pycache__/
+
+# PyCharm, VS Code and other IDEs
+.idea/
+*.iml
+.vscode/
+grafana_data/

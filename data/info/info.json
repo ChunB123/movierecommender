@@ -1,0 +1,14 @@
+{
+  "log": {
+    "start_time": "2023-11-05T10:23:01",
+    "end_time": "2023-11-12T21:14:04"
+  },
+  "model_version": 1,
+  "training_data_version": 2,
+  "recommendation_version": 2,
+  "pipeline_version": 1,
+  "previous_versions": {
+    "1": "1.1.1",
+    "2": "1.1.2"
+  }
+}
