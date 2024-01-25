@@ -74,5 +74,6 @@ if __name__ == '__main__':
     # Test CD num_1
     # get_variationids_list()
     # percentage_roll_out(1, 2, 0.2)
-    average_response_time = get_average_response_time("http://fall2023-comp585-2.cs.mcgill.ca:8082/recommend/1")
+    url = ""
+    average_response_time = get_average_response_time(url)
     print(f"Average response time: {average_response_time} seconds")

@@ -1,8 +1,9 @@
 from confluent_kafka import Consumer, KafkaError
 import os
 
+url = ""
 conf = {
-    'bootstrap.servers': 'fall2023-comp585.cs.mcgill.ca:9092',  # Kafka broker
+    'bootstrap.servers': url,  # Kafka broker
     'group.id': 'log_consumer_group',
     'auto.offset.reset': 'latest'
 }

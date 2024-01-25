@@ -15,7 +15,9 @@ def recommendation_route(user_id):
     # user_movies_file = "../data/user_movie_i.csv"
     common_movies_file = "../data/common_movies.csv"
 
-    response = curl_req('http://fall2023-comp585.cs.mcgill.ca:8080/user/'+str(user_id))
+    url = ""
+
+    response = curl_req(url+str(user_id))
     #print(response)
     if 'message' in response:
         return "Invalid user"

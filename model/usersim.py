@@ -25,7 +25,8 @@ def getMostSimilarUser(userid):
         data = json.load(file)
 
     user_data = {k : v['user_info'] for k, v in data.items()}
-    user_data[str(userid)] = curl_req('http://fall2023-comp585.cs.mcgill.ca:8080/user/'+str(userid))
+    url = ""
+    user_data[str(userid)] = curl_req(url+str(userid))
 
     df = pd.DataFrame(user_data).T
     df = df.drop('user_id', axis=1)

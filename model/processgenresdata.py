@@ -17,9 +17,10 @@ def generatecsv():
     genredict = {}
     moviegenredict = {}
 
-    for movie in movie_ids: 
+    for movie in movie_ids:
+        url = ""
         
-        movie_info = curl_req(f"http://fall2023-comp585.cs.mcgill.ca:8080/movie/{movie}")
+        movie_info = curl_req(url)
 
         genre_list = [genre["name"] for genre in movie_info["genres"]]
         moviegenredict[movie] = genre_list

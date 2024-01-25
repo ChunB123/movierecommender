@@ -22,7 +22,7 @@ Deploy_job:
   stage: Deploy
   script:
     - >
-      ssh -o StrictHostKeyChecking=no team-2@fall2023-comp585-2.cs.mcgill.ca "
+      ssh -o StrictHostKeyChecking=no TARGET_URL"
       pwd;
       cd /home/team-2/m3_deploy/team-2;
       pwd;

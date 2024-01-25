@@ -1,45 +1,10 @@
 # Movie Recommendation System
-Generate 5-10 recommendations per seconds from 27k movies. 
+Generate 5-10 recommendations per seconds from around 30k movies. 
 
 Separate monitoring services to extra containers.
 
 Zero down time continues deployment enabled.
 
-## For remote machine
-``
-ssh team-2@fall2023-comp585-2.cs.mcgill.ca
-``
-
-Check current movielog 
-``
-docker run -it --log-opt max-size=50m --log-opt max-file=5 bitnami/kafka kafka-console-consumer.sh --bootstrap-server fall2023-comp585.cs.mcgill.ca:9092 --topic movielog2
-``
-
-Check movielog from beginning
-``
-docker run -it --log-opt max-size=50m --log-opt max-file=5 bitnami/kafka kafka-console-consumer.sh --bootstrap-server fall2023-comp585.cs.mcgill.ca:9092 --topic movielog2 --from-beginning
-``
-
-Is the server still live?
-``
-http://fall2023-comp585-2.cs.mcgill.ca:8082/recommend/1
-``
-
-`
-docker run -it -p 8082:8082/tcp chunb123/ml_service:v0`
-
-`docker ps`
-
-`docker stop <container_id_or_name>`
-
-`docker rm <container_id_or_name>`
-
-
-
-## Retrive Data
-``curl http://fall2023-comp585.cs.mcgill.ca:8080/user/1``
-
-``curl http://fall2023-comp585.cs.mcgill.ca:8080/movie/turistas+2006``
 
 
 ## For local machine
